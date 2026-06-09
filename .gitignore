@@ -12,3 +12,8 @@ __pycache__/
 /core/employee-onboarding
 /core/example/example_EY
 /core/output/output_employee
+
+/core/output/output_results
+
+/event_logs
+/petri_and_params

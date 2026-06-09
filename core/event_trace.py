@@ -130,7 +130,7 @@ class Token(object):
             trans = self.next_transition(env) if self._am else None
 
         if self._type == 'parallel':
-            self._parallel_object._set_last_events(self._am)
+            self._parallel_object._set_last_events(self._am or {})
         if self._type == 'sequential':
             resource_trace.release(resource_trace_request)
 
@@ -142,7 +142,8 @@ class Token(object):
         return resource_object
 
     def _update_marking(self, trans):
-        self._am = semantics.execute(trans, self._net, self._am)
+        result = semantics.execute(trans, self._net, self._am)
+        self._am = result if result is not None else {}
 
     def _delete_tokens(self, name):
         to_delete = []

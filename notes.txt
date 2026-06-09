@@ -1,0 +1,1 @@
+RIMS uses roles which is a set of resources that do same activities. If there are no spesified roles, then it assumes that every resource is a role. That is restricting, define roles if possible. Defining roles in parameter json file would improve performance. For now, it seems to be done manually, but that would take long time, if you don’t know how the workplace operates.

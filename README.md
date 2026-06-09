@@ -120,3 +120,52 @@ If the number of simulations to be run is more than one, RIMS_tool returns the s
 Francesca Meneghello, Chiara Di Francescomarino, Chiara Ghidini
 
 Demo paper *RIMS_tool: a Hybrid Simulator for Business Processes*.
+
+
+
+ReadMe_new Uni-Bayreuth Seminar (Kaan Torunoglu)
+
+Installation:
+I have changed environment file (rims_tool.yml) because some libraries are not compatible with Windows.
+After creating new environment on Anaconda with rims_tool.yml file, I installed rest of the dependencies in requirements.txt with pip.
+
+RIMS requires a petrinet model (.pnml) and a parameter json file. For parameter.json file I don't know what to set, thus I used directly the ai generated file.
+
+New running plan:
+1. Copy your event_log.xes file in event_logs folder.
+2. Run "prepare_inputs.py" script:
+
+```shell
+python prepare_inputs.py --xes ".\event_logs\<your_event_log_file>.xes" --out ".\petri_and_params"
+```
+3. Change directory to "core" folder.
+
+```shell
+cd core
+```
+
+4. Run "run_simulation.py" from article code as stated above.
+
+```shell
+python run_simulation.py -p <petrinet>.pnml -s <simulation_parameters>.json -t 10 -i 1 -o <output_folder_name>
+```
+
+5. Generated log is found in "core\output\<output_folder_name>
+
+
+
+Example command order after copying your event log in event_logs folder(with Production.xes file):
+
+```shell
+python prepare_inputs.py --xes ".\event_logs\Production.xes" --out ".\petri_and_params"
+```
+
+```shell
+cd core
+```
+
+```shell
+python run_simulation.py -p "..\petri_and_params\Production.pnml" -s "..\petri_and_params\Production_parameters.json" -t 10 -i 1 -o results
+```
+
+
